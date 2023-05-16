@@ -40,7 +40,6 @@ class _Belet1State extends State<Belet1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       bottomNavigationBar: Container(
         height: 80,
         width: MediaQuery.of(context).size.width,
@@ -137,27 +136,38 @@ class _Belet1State extends State<Belet1> {
                           },
                           icon: Icon(Icons.arrow_back_ios)),
                       Text(
-                        'Билеты ${widget.id}',
+                        'Bilet ${widget.id}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 22),
                       ),
                       SizedBox(
-                        width: 130,
+                        width: 100,
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.schedule,
-                            size: 30,
-                            color: Color.fromARGB(255, 9, 85, 147),
-                          )),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        '18:12',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                      Row(
+                        children: [
+                          // Image(
+                          //     width: 48,
+                          //     height: 48,
+                          //     image: AssetImage("assets/timer.png")),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border.all(color: Colors.pink, width: 2),
+                            ),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 28,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),

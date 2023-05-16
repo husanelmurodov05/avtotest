@@ -12,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   List<Bilet> biletlar = [];
-   bool isLoading= false;
+  List<Bilet> biletlar = [];
+  bool isLoading = false;
   // int secount = 60;
   // Timer? timer;
 
@@ -49,85 +49,103 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey.shade100,
-        body: isLoading? Center(child: CircularProgressIndicator(),): Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-           
-            Text("Belitlar"),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(left: 12, right: 12),
-                child: GridView.builder(
-                  itemCount: biletlar.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 14,
-                      mainAxisSpacing: 14,
-                      mainAxisExtent: 75,
-                      ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Belet1(
-                                      id: biletlar[index].bilet,
-                                    )));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(
-                          //      mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Image(
-                                width: 24,
-                                height: 24,
-                                image: AssetImage("assets/docum.png")),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 25,
-                              ),
-                              child: Column(
+        body: isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 35),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Bilet",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22),
+
+                          ///  textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(left: 12, right: 12),
+                      child: GridView.builder(
+                        itemCount: biletlar.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 14,
+                          mainAxisSpacing: 14,
+                          mainAxisExtent: 75,
+                        ),
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Belet1(
+                                            id: biletlar[index].bilet,
+                                          )));
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Row(
+                                //      mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text('Bilet ${biletlar[index].bilet}'),
                                   SizedBox(
-                                    height: 5,
+                                    width: 12,
+                                  ),
+                                  Image(
+                                      width: 24,
+                                      height: 24,
+                                      image: AssetImage("assets/docum.png")),
+                                  SizedBox(
+                                    width: 18,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 25,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text('Bilet ${biletlar[index].bilet}'),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          'Avto Test',
+                                          style: TextStyle(
+                                              color: Colors.grey, fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 18,
                                   ),
                                   Text(
-                                    'Avto Test',
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 12),
+                                    '10/1',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Text(
-                              '10/1',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ],
-        ));
+                    ),
+                  ),
+                ],
+              ));
   }
 }
