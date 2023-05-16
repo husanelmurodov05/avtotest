@@ -34,17 +34,18 @@ class _Belet1State extends State<Belet1> {
     getSavollar();
   }
 
-  List<Map<String,dynamic>> selectedAnswer =
+  List<Map<String, dynamic>> selectedAnswer =
       List.generate(10, (index) => {"answer": "", "isTrue": ""});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       bottomNavigationBar: Container(
         height: 80,
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         color: Colors.white,
-        margin: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
             InkWell(
@@ -216,7 +217,7 @@ class _Belet1State extends State<Belet1> {
                                 decoration: BoxDecoration(
                                     color: selectedAnswer[index]["answer"] == ""
                                         ? Colors.white
-                                        : (savollar[index].javob=="A"
+                                        : (savollar[index].javob == "A"
                                             ? Colors.green
                                             : Colors.red),
                                     borderRadius: BorderRadius.circular(16)),
@@ -229,9 +230,12 @@ class _Belet1State extends State<Belet1> {
                                             title:
                                                 Text(savollar[index].javobA!),
                                             value: "A",
-                                            groupValue: selectedAnswer[index]["answer"],
+                                            groupValue: selectedAnswer[index]
+                                                ["answer"],
                                             onChanged: (value) {
-                                              if(selectedAnswer[index]["answer"]!=""){
+                                              if (selectedAnswer[index]
+                                                      ["answer"] !=
+                                                  "") {
                                                 return null;
                                               }
                                               if (value ==
@@ -247,7 +251,7 @@ class _Belet1State extends State<Belet1> {
                                               } else {
                                                 setState(() {
                                                   selectedAnswer[index]
-                                                    ["isTrue"] = false;
+                                                      ["isTrue"] = false;
                                                 });
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(SnackBar(
@@ -271,7 +275,7 @@ class _Belet1State extends State<Belet1> {
                                 decoration: BoxDecoration(
                                     color: selectedAnswer[index]["answer"] == ""
                                         ? Colors.white
-                                        : (savollar[index].javob=="B"
+                                        : (savollar[index].javob == "B"
                                             ? Colors.green
                                             : Colors.red),
                                     borderRadius: BorderRadius.circular(16)),
@@ -284,66 +288,12 @@ class _Belet1State extends State<Belet1> {
                                             title:
                                                 Text(savollar[index].javobB!),
                                             value: "B",
-                                            groupValue: selectedAnswer[index]["answer"],
+                                            groupValue: selectedAnswer[index]
+                                                ["answer"],
                                             onChanged: (value) {
-                                               if(selectedAnswer[index]["answer"]!=""){
-                                                return null;
-                                              }
-                                              if (value ==
-                                                  savollar[index].javob) {
-                                                 setState(() {
-                                                  selectedAnswer[index]
-                                                    ["isTrue"] = true;
-                                                });
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                        content: Text(
-                                                            "Siz to'g'ri javob berdingiz")));
-                                              } else {
-                                                 setState(() {
-                                                  selectedAnswer[index]
-                                                    ["isTrue"] = false;
-                                                });
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                        content: Text(
-                                                            "Notog'ri javob berdingiz")));
-                                              }
-                                              setState(() {
-                                                selectedAnswer[index]
-                                                    ["answer"] = value!;
-                                              });
-                                            }),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                             savollar[index].javobC == ""
-                                  ? Container()
-                                  :    Container(
-                                padding: EdgeInsets.all(16),
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                margin: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    color: selectedAnswer[index]["answer"] == ""
-                                        ? Colors.white
-                                        : (savollar[index].javob=="C"
-                                            ? Colors.green
-                                            : Colors.red),
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Row(
-                                    children: [
-                                      Flexible(
-                                        child: RadioListTile(
-                                            title:
-                                                Text(savollar[index].javobA!),
-                                            value: "C",
-                                            groupValue: selectedAnswer[index]["answer"],
-                                            onChanged: (value) {
-                                              if(selectedAnswer[index]["answer"]!=""){
+                                              if (selectedAnswer[index]
+                                                      ["answer"] !=
+                                                  "") {
                                                 return null;
                                               }
                                               if (value ==
@@ -359,7 +309,7 @@ class _Belet1State extends State<Belet1> {
                                               } else {
                                                 setState(() {
                                                   selectedAnswer[index]
-                                                    ["isTrue"] = false;
+                                                      ["isTrue"] = false;
                                                 });
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(SnackBar(
@@ -376,64 +326,143 @@ class _Belet1State extends State<Belet1> {
                                   ),
                                 ),
                               ),
-                             savollar[index].javobD == ""
+                              savollar[index].javobC == ""
                                   ? Container()
-                                  :    Container(
-                                padding: EdgeInsets.all(16),
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                margin: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    color: selectedAnswer[index]["answer"] == ""
-                                        ? Colors.white
-                                        : (savollar[index].javob=="D"
-                                            ? Colors.green
-                                            : Colors.red),
-                                    borderRadius: BorderRadius.circular(16)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Row(
-                                    children: [
-                                      Flexible(
-                                        child: RadioListTile(
-                                            title:
-                                                Text(savollar[index].javobA!),
-                                            value: "D",
-                                            groupValue: selectedAnswer[index]["answer"],
-                                            onChanged: (value) {
-                                              if(selectedAnswer[index]["answer"]!=""){
-                                                return null;
-                                              }
-                                              if (value ==
-                                                  savollar[index].javob) {
-                                                setState(() {
-                                                  selectedAnswer[index]
-                                                      ["isTrue"] = true;
-                                                });
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                        content: Text(
-                                                            "Siz to'g'ri javob berdingiz")));
-                                              } else {
-                                                setState(() {
-                                                  selectedAnswer[index]
-                                                    ["isTrue"] = false;
-                                                });
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                        content: Text(
-                                                            "Notog'ri javob berdingiz")));
-                                              }
-                                              setState(() {
-                                                selectedAnswer[index]
-                                                    ["answer"] = value!;
-                                              });
-                                            }),
+                                  : Container(
+                                      padding: EdgeInsets.all(16),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.95,
+                                      margin: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          color: selectedAnswer[index]
+                                                      ["answer"] ==
+                                                  ""
+                                              ? Colors.white
+                                              : (savollar[index].javob == "C"
+                                                  ? Colors.green
+                                                  : Colors.red),
+                                          borderRadius:
+                                              BorderRadius.circular(16)),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
+                                        child: Row(
+                                          children: [
+                                            Flexible(
+                                              child: RadioListTile(
+                                                  title: Text(
+                                                      savollar[index].javobA!),
+                                                  value: "C",
+                                                  groupValue:
+                                                      selectedAnswer[index]
+                                                          ["answer"],
+                                                  onChanged: (value) {
+                                                    if (selectedAnswer[index]
+                                                            ["answer"] !=
+                                                        "") {
+                                                      return null;
+                                                    }
+                                                    if (value ==
+                                                        savollar[index].javob) {
+                                                      setState(() {
+                                                        selectedAnswer[index]
+                                                            ["isTrue"] = true;
+                                                      });
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(SnackBar(
+                                                              content: Text(
+                                                                  "Siz to'g'ri javob berdingiz")));
+                                                    } else {
+                                                      setState(() {
+                                                        selectedAnswer[index]
+                                                            ["isTrue"] = false;
+                                                      });
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(SnackBar(
+                                                              content: Text(
+                                                                  "Notog'ri javob berdingiz")));
+                                                    }
+                                                    setState(() {
+                                                      selectedAnswer[index]
+                                                          ["answer"] = value!;
+                                                    });
+                                                  }),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              ],
+                                    ),
+                              savollar[index].javobD == ""
+                                  ? Container()
+                                  : Container(
+                                      padding: EdgeInsets.all(16),
+                                      width: MediaQuery.of(context).size.width *
+                                          0.95,
+                                      margin: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          color: selectedAnswer[index]
+                                                      ["answer"] ==
+                                                  ""
+                                              ? Colors.white
+                                              : (savollar[index].javob == "D"
+                                                  ? Colors.green
+                                                  : Colors.red),
+                                          borderRadius:
+                                              BorderRadius.circular(16)),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
+                                        child: Row(
+                                          children: [
+                                            Flexible(
+                                              child: RadioListTile(
+                                                  title: Text(
+                                                      savollar[index].javobA!),
+                                                  value: "D",
+                                                  groupValue:
+                                                      selectedAnswer[index]
+                                                          ["answer"],
+                                                  onChanged: (value) {
+                                                    if (selectedAnswer[index]
+                                                            ["answer"] !=
+                                                        "") {
+                                                      return null;
+                                                    }
+                                                    if (value ==
+                                                        savollar[index].javob) {
+                                                      setState(() {
+                                                        selectedAnswer[index]
+                                                            ["isTrue"] = true;
+                                                      });
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(SnackBar(
+                                                              content: Text(
+                                                                  "Siz to'g'ri javob berdingiz")));
+                                                    } else {
+                                                      setState(() {
+                                                        selectedAnswer[index]
+                                                            ["isTrue"] = false;
+                                                      });
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(SnackBar(
+                                                              content: Text(
+                                                                  "Notog'ri javob berdingiz")));
+                                                    }
+                                                    setState(() {
+                                                      selectedAnswer[index]
+                                                          ["answer"] = value!;
+                                                    });
+                                                  }),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                            ],
                           ),
                         );
                       }),
